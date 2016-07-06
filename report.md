@@ -1,14 +1,8 @@
-0. abstract
+% Critical Care Project Report
+% Research Software Development Group
+% 7th July 2016
 
-1. Road map: from ICIP and MEDICA XML to research ready data.
-
-1. What are the benefits of RSD involvement.
-  * Open source.
-  * Business readable - data driven, yaml. 
-  * Sustainability  - testings, documentation, CRAN format
-  * cross platform. 
-
-
+\newpage
 Report 
 The critical care patient data sitting in the NHS trusts
 across the UK will be the cornerstone many future medical and health services
@@ -20,16 +14,12 @@ The RSDG was brought up to the project with the mission of bridging the gap by
 providing open source software solutions. 
 
 
-The
-RSDG started getting involved in this project from February 2016 with the
+TheRSDG started getting involved in this project from February 2016 with the
 mission of bridging this gap by providing sustainable readable software
 interface. 
 
 There is a crucial step from the data to research which is the software that
 Critical care research modelling activities 
-
-* the workflow
-# The Road Map of Critical Care: from XML files to research available data.
 
 
 # what have we done?
@@ -46,6 +36,7 @@ Critical care research modelling activities
   episode. Hence we will be able to tell where each episode data comes from
   and when it has been parsed.
 
+
 * Data validation check and report
   Data validation and cleaning functions has been incorporated in the ccdata
   package. Data sanity check is conducted in many aspects regarding to the
@@ -56,9 +47,11 @@ Critical care research modelling activities
   analysis. Subsequently, users will be able to generate the clean table for
   their research. In the following data cleaning configuration example, we
   presented three different filters for the item heart rate. We call each
-  criterion filters. 
+  criterion filters.
+
+
    
-```
+```yaml
   NIHR_HIC_ICU_0108:
     shortName: hrate
     dataItem: Heart rate
