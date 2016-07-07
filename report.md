@@ -5,9 +5,9 @@
 \newpage
 # Introduction
 The critical care patient data will be the cornerstone of many future medical
-and health services research. However, the raw data needs to be converted into
+and health services research. However, the raw data need to be converted into
 a research-ready structure to enable and ease its scientific analysis.
-Thus, to cover that gap the data has to be transformed into a queryable form
+Thus, to cover that gap the data have to be transformed into a queryable form
 and its properties and quality to be understood. 
 The UCL Research Software Development Group's mission 
 is to provide an open source software solution to
@@ -18,7 +18,7 @@ We have built a pipeline which converts the `XML` raw data to the queryable RDat
 Additionally enabling to export the resultant data into `CSV` format to
 be used outside R (_e.g._, with Excel). 
 A business readable data quality check dictionary is used in the pipeline to 
-clean the data. The non-validated data is
+clean the data. The non-validated data are
 either modified or removed according to the such criteria. Subsequently, an
 auto-generated data quality report is produced to report the key fields
 missingness and data sanity by each site and unit. By the end of the pipeline the
@@ -39,57 +39,59 @@ on the Travis CI system. Overall this ensures the software to be a gateway to th
 plays a critical role in the future success of the community.
 
 # The Data Process Pipeline
-![The Data Process Pipeline](pipeline.png)
+![Data Process Pipeline with summary report of the data processed](pipeline.png)
 
 ## The XML data and the Data Safe Haven
-Data associated with more than 12,000 patients from 5 NHS trusts are available
-in XML format. The data were drawn from the ICIP and Medicuse database which
+Data associated with more than 12,000 patients from five NHS trusts are available
+in `XML` format. The data were drawn from the ICIP and Medicuse databases which
 contains demographic, drugs, laboratory, nursing and physiology data. The
-de-identifiable data are processed locally and the identifiable data is on the
-UCL Data Safe haven (IDHS).  In order to create the pipeline of on IDHS, we
-ordered and configured a UNIX virtual environment. Due to the limit capacity of
+de-identifiable and identifiable data are processed locally and on the
+UCL Data Safe haven (IDHS) respectively.  In order to create the pipeline on IDHS, we
+requested and configured a Linux virtual environment. Due to the limited capacity of
 IDHS, it is still useful to keep a local de-identifiable copy for development
-purpose. Our pipeline is designed to be portable on multiple platforms. It can be
-executed on both local environments and IDSH with either de-identifiable or
+purposes. The pipeline is designed to be portable on multiple platforms. It can be
+executed on both local environments and IDHS with de-identifiable and 
 identifiable data. 
+
 ## XML parser
 
-The XML parser in R combines and restructures the XML files into a newly defined R
-data structure __ccRecord__, which significantly improved the clarity of the
-data by organising data under tables and removing the redundancy of the XML
-files.  __ccRecord__ is designed as a flexible, simplified, and query-able data
-structure for critical care data. Data in __ccRecord__ format will be eventually
-stored in a RData file which is about 500 times smaller than that of the XML
-files.  In addition the data provenance is recored by each episode, henceforth
-we will be able to tell which file does each episode data comes from and when
-it has been parsed. The selected data fields can be exported as a CSV file for
-the Excel users. - and other programming languages
+The `XML` parser in R combines and restructures the `XML` files into a newly defined R
+data structure `ccRecord`, which significantly improves the clarity of the
+data by organising it under tables and removing the redundancy of the `XML`
+files. `ccRecord` is designed as a flexible, simplified, and queryable data
+structure for critical care measurements. Data in `ccRecord` format is eventually
+stored in a RData file which is about 500 times smaller than the original `XML`
+files.  In addition the data provenance is recorded by each episode, henceforth
+we are able to tell from which file each episode comes and when
+it has been parsed. The selected data fields can be exported into a `CSV` file for
+Excel users or to be used with any other analysis tool or programming language.
 
-It is worth mentioning that a C++ equivalent XML parser, which has a much better
-performance comparing to the R parser, is developed but not deployed due
-to the time constraint of the project. To incorporate the C++ parser into the
-pipeline will be a potential future improvement. 
+It is worth mentioning that a `C++` equivalent `XML` parser, which has a much better
+performance comparing to the currently used in R, has been developed but not deployed yet due
+to the time constraints of the project. The incorporation of the `C++` parser into the
+pipeline will boost the speed in which all the files are converted.
 
 ## Auto-generated quality report
-Data can have defects in many different ways. Therefore a synthetic quality
-assessment which may allow us to report back to the source of the data can be
-extremely useful. An automatic generated data quality report which reflects to
-quality issues have been developed. Based on the report, we will be able to
-tell the major missingness issues and some data sanity issues and the basic
+Data may have imperfections in various ways. Therefore a synthetic quality
+assessment that allows us to report back to the data source is
+extremely useful. An automatic generated data quality report which reflects the
+quality issues have been developed and deployed. Based on the report, we are able to
+inform the major missingness issues and some data sanity problems together with basic
 information such as the duration, sites, number of episodes, and number of
-patient.
+patients.
 
 ## Data validation and cleaning
-Data validation and cleaning functions have been incorporated in the ccdata
+Data validation and cleaning functions in included in the `ccdata`
 package. Data sanity check is conducted in many aspects regarding to the
-intrinsic property of the individual fields. There are three major validation,
+intrinsic property of the individual fields. There are three major validations:
 the numeric range, the text category, and the missingness. The users are
-required to fill a `yaml` form to guide the validation check. We
-will be able to flag the level of the data sanity and opt out the data that do
-not make sense or inform the users according to the yaml dictionary. We will
-again go through the yaml dictionary in the next session. After this stage, 
-we are able to deliver a "cleaned" and query-able R table to the researchers.
-
+required to fill a `yaml` form to guide the validation check. Consequently,
+the data is flagged accordingly to the the level of the data sanity
+excluding the data that do
+not make sense. 
+After this stage, 
+we are able to deliver a "cleaned" and queryable R table to the researchers.
+Next section discusses in more detail the `yaml` dictionary.
 
 # The R package: ccdata
 The ccdata R package is the centralised toolset we developed for pipelining and data
