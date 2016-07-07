@@ -33,7 +33,7 @@ we focus in the usability and sustainability of
 the software produced. All of our development is constantly updated in the
 GitHub platform which is accessible to all the allowed users.  The installation process of
 our software aims to simplicity. The code is self-explanatory and well
-documented providing accessibility to the  (empowering?) users and future
+documented empowering users and future
 developers. Testings are conducted after any modification of code automatically
 on the Travis CI system. Overall this ensures the software to be a gateway to the data which
 plays a critical role in the future success of the community.
