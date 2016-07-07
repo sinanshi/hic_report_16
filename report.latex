@@ -78,7 +78,7 @@ $endif$
 \newcommand*\closequote{\makebox(25,-22){\scalebox{5}{\color{DarkGreen}''}}}
 \definecolor{verypalegreen}{RGB}{252,255,250}
 \colorlet{shadecolor}{verypalegreen}
-
+%\setlength{\textwidth}{6in}
 \makeatletter
 \def\shadequote{\begin{snugshade}\begin{oldquote}\openquote}
 \def\endshadequote{%
