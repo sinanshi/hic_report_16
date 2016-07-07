@@ -48,10 +48,9 @@ IDSH, it is still useful to keep a local de-identifiable copy for development
 purpose. Our pipeline is designed to be portable on multiple platforms. It can be
 executed on both local environments and IDSH with either de-identifiable or
 identifiable data. 
-
 ## XML parser
 
-The XML parser combines and restructures the XML files into a newly defined R
+The XML parser in R combines and restructures the XML files into a newly defined R
 data structure __ccRecord__, which significantly improved the clarity of the
 data by organising data under tables and removing the redundancy of the XML
 files.  __ccRecord__ is designed as a flexible, simplified, and query-able data
@@ -61,6 +60,11 @@ files.  In addition the data provenance is recored by each episode, henceforth
 we will be able to tell which file does each episode data comes from and when
 it has been parsed. The selected data fields can be exported as a CSV file for
 the Excel users. 
+
+It is worth mentioning that a C++ equivalent XML parser, which has a much better
+performance comparing to the R parser, is developed but not deployed due
+to the time constraint of the project. To incorporate the C++ parser into the
+pipeline will be a potential future improvement. 
 
 ## Auto-generated quality report
 Data can have defects in many different ways. Therefore a synthetic quality
@@ -90,8 +94,9 @@ which makes the code sharing easy. ccdata is portable in almost all platforms
 where R environment is provided. It can be installed effortlessly on Windows or
 Unix based systems. Although it is necessary to have some further tidy-ups in
 the subsequent development cycle, in current stage, the main part of the R code
-is well documented and properly tested which are the keys of code robustness
-and usability. 
+is well documented and properly tested. 
+
+The data manipulation functions are all bundled in the 
 
 
 ## Selection and cleaning yaml configuration
