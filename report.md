@@ -88,22 +88,34 @@ we are able to deliver a "cleaned" and query-able R table to the researchers.
 
 
 # The R package: ccdata
-The main part of the pipeline can be performed by the functions in the R
-package ccdata. A package bundles all code, documentation and tests together,
-which makes the code sharing easy. ccdata is portable in almost all platforms
-where R environment is provided. It can be installed effortlessly on Windows or
-Unix based systems. Although it is necessary to have some further tidy-ups in
-the subsequent development cycle, in current stage, the main part of the R code
-is well documented and properly tested. 
+The ccdata R package is the centralised toolset we developed for pipelining and data
+manipulation. The package bundles not only all the R/C++ code but also
+documentation and tests together, which makes the code sharing easier. The
+ccdata package is portable in almost all platforms where R environment is
+provided. It can be installed effortlessly on Windows or Unix based systems.
+Although it is necessary to have some further tidy-ups in the subsequent
+development cycle, in the current stage, the main part of the R code is well
+documented and properly tested. 
 
-The data manipulation functions are all bundled in the 
+In order to prepare the first paper, many data manipulation processes are
+needed. Instead of making some one-off scripts, we incorporated the data
+manipulation processes as re-usable functions in our ccdata package. The
+frequently functions such as detecting unique patient and spell and data
+imputation can be called from the package, which reduced the duplication of
+work in the future. The package is still growing as the research goes on.  
 
+## Data Selection and cleaning in the yaml configuration
+Notwithstanding the fact that to be able use and program with ccdata package
+offers a great flexibility in data analysis, the pipeline can be performed
+without any programming knowledge. The users can run the pipeline by only
+filling the yaml configuration file. The yaml form is straight forward and
+self-explanatory for non-programmers. The user selected data fields with the
+the cleaning process can be provided by the end of the pipeline in a single CSV
+file which can be open in MS Excel. 
 
-## Selection and cleaning yaml configuration
 Here is an example of the yaml data cleaning configuration of heart
 rate, in which three filters __nodata__, __range__, __missingness__ are
-presented in the following data cleaning configuration for heart rate. The yaml
-form is straight forward and self-explanatory for non-programmers. 
+presented in the following data selection and cleaning configuration. 
 
 ```Python
 NIHR_HIC_ICU_0108:
@@ -134,8 +146,12 @@ NIHR_HIC_ICU_0108:
   apply: drop_episode 
 ```
 
-
-
 # Summary
-wrap up
 
+The RSDG got involved in the critical care data project since January 2016. In
+the last six months, we participated the paper preparation with the critical
+care team, meanwhile developed the re-usable and sustainable software tools for
+the data pipeline and data manipulation. In the potential next phase of this
+project, we will focus on the linkage of the data of other HIC groups and
+external sources. We will continue our support to the researchers by providing
+sustainable software tools. 
