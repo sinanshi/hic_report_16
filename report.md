@@ -93,37 +93,37 @@ After this stage,
 we are able to deliver a "cleaned" and queryable R table to the researchers.
 Next section discusses in more detail the `yaml` dictionary.
 
-# The R package: ccdata
-The ccdata R package is the centralised toolset we developed for pipelining and data
-manipulation. The package bundles not only all the R/C++ code but also
-documentation and tests together, which makes the code sharing easier. The
-ccdata package is portable in almost all platforms where R environment is
-provided. It can be installed effortlessly on Windows or Unix based systems.
-Although it is necessary to have some further tidy-ups in the subsequent
-development cycle, in the current stage, the main part of the R code is well
-documented and properly tested. 
+# The R package: `ccdata`
+The `ccdata` R package is the centralised toolset developed for piping and data
+manipulation. The package bundles not only all the R/C++ code but also its
+documentation and tests making easier code sharing. The
+`ccdata` package is portable to almost all platforms where a R environment is
+available. It can be installed effortlessly on Windows or UNIX based systems.
+Although it is necessary to provide further tidy-ups in the subsequent
+development cycle, the main part of the R code in the current stage is well
+documented and properly tested.
 
-In order to prepare the first paper, many data manipulation processes are
-needed. Instead of making some one-off scripts, we incorporated the data
-manipulation processes as re-usable functions in our ccdata package. The
-frequently functions such as detecting unique patient and spell and data
-imputation can be called from the package, which reduced the duplication of
-work in the future. The package is still growing as the research goes on.  
+In order to prepare the first scientific publication, many data manipulation processes were
+needed. Instead of making one-off scripts, we incorporated the data
+manipulation processes as re-usable functions in the `ccdata` package. The
+frequently used functions such as detecting unique patient and spell and data
+imputation can be called from the package reducing therefor the duplication of
+work in the future. The package is still growing as the research goes on.
 
-## Data Selection and cleaning in the yaml configuration
-Notwithstanding the fact that to be able use and program with ccdata package
+## Data Selection and cleaning in the `yaml` configuration
+Notwithstanding the fact that to be able to use and program with ccdata package
 offers a great flexibility in data analysis, the pipeline can be performed
 without any programming knowledge. The users can run the pipeline by only
-filling the yaml configuration file. The yaml form is straight forward and
-self-explanatory for non-programmers. The user selected data fields with the
-the cleaning process can be provided by the end of the pipeline in a single CSV
-file which can be open in MS Excel. 
+filling a `yaml` configuration file. The `yaml` form is straight forward and
+self-explanatory for non-programmers. The user selects data fields for the
+cleaning process obtaining a single `CSV`
+file at the end of the pipeline which can be open in MS Excel. 
 
-Here is an example of the yaml data cleaning configuration of heart
-rate, in which three filters __nodata__, __range__, __missingness__ are
+Below is an example of the `yaml` data cleaning configuration of heart
+rate, in which three filters `nodata`, `range`, `missingness` are
 presented in the following data selection and cleaning configuration. 
 
-```Python
+```python
 NIHR_HIC_ICU_0108:
   shortName: hrate
   dataItem: Heart rate
@@ -131,11 +131,11 @@ NIHR_HIC_ICU_0108:
   decimal_places: 0
 
   # filter1: do not use the episode where hrate cannot be found.
-  nodata:     
+  nodata:
      apply: drop_episode
 
   # filter2: mark all the values based on reference range (traffic colour) remove entries where the range check is not fullfilled.  
-  range:  
+  range: 
       labels:
           red: (0, 300)
           amber: (0, 170) 
@@ -154,10 +154,10 @@ NIHR_HIC_ICU_0108:
 
 # Summary
 
-The RSDG got involved in the critical care data project since January 2016. In
-the last six months, we participated the paper preparation with the critical
-care team, meanwhile developed the re-usable and sustainable software tools for
-the data pipeline and data manipulation. In the potential next phase of this
-project, we will focus on the linkage of the data of other HIC groups and
-external sources. We will continue our support to the researchers by providing
+RSDG got involved in the critical care data project since January 2016. In
+the last six months we contributed to the paper preparation with the critical
+care team while developing the re-usable and sustainable software tools for
+the data pipeline and data manipulation. In the next phase of this
+project, we are focusing on the linkage of the data of other HIC groups and
+external sources. We continue supporting researchers by providing
 sustainable software tools. 
